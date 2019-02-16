@@ -1,0 +1,110 @@
+body {
+	height: 100%;
+	margin: 0;
+	text-align: center;
+    color: black;
+	width: 100%;
+	font-family: Comic Sans MS, cursive, serif;
+    background-color: 328cc1;
+    /*
+	background-color: rgb(67, 66, 90);
+    */
+    
+	background-size: initial;
+}
+page-description{
+    background-color: #0b3c5d;
+    margin-left:25%;
+    margin-right:25%;
+    height:100%;
+}
+dt{
+    font-size:150%;
+    font-weight:bold;
+    background: #233237;
+    /*
+    background: rgb(250,250,100,0.8);
+    */
+	margin-left: 25%;
+    margin-right: 25%;
+    text-align:left;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 30px;
+    padding-left: 1rem;
+    padding-right:1rem;
+}
+dt a{
+    color: whitesmoke;
+    text-decoration:none;
+    word-wrap: break-word;
+}
+dd{
+    word-wrap:break-word;
+    background:#233237;
+    /*
+    background: rgb(255, 250, 0,0.8);
+    */
+    margin-left:25%;
+    margin-right:25%;
+    text-align:left;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-bottom:.5rem;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: rgba(255, 250, 246, 0.8);
+    margin-top: 0px;
+    line-height: 5rem;
+    /*border-style: solid;
+    */border-width: medium;
+    border-left-width:0%;
+}
+
+.p-list{
+    background-color: #0b3c5d;
+    margin-left:25%;
+    margin-right:25%;
+    height:100%;
+}
+.buffer{
+    padding:.2em;
+}
+
+.v_button{
+    color: #333;
+    font-family: Segoe UI;
+    border:none;
+    padding:1em;
+    background: yellow;
+}
+
+.logo {
+    display:flex;
+    float:left;
+    padding: .25rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    background-color: rgba(255, 250, 246, 0.8);
+}
+
+.topnav a {
+    float: left;
+    display: flex;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    font-family: Segoe UI;
+	font-size: 2rem;
+    padding:.5rem;
+    padding-left:2.5rem;
+    padding-right:2.5rem;
+}
+.topnav a:hover {
+    background-color: rgb(50,60,120);
+    color:rgb(255, 250, 0);
+}
+
