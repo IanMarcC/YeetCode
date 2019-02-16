@@ -1,0 +1,82 @@
+body {
+	height: 100%;
+	margin: 0;
+	text-align: center;
+    color: black;
+	width: 100%;
+	font-family: Comic Sans MS, cursive, serif;
+    background-color: 328cc1;
+    /*
+	background-color: rgb(67, 66, 90);
+    */
+    
+	background-size: initial;
+}
+.topnav {
+    overflow: hidden;
+    background-color: rgba(255, 250, 246, 0.8);
+    margin-top: 0px;
+    line-height: 5rem;
+    /*border-style: solid;
+    */border-width: medium;
+    border-left-width:0%;
+}
+
+.logo {
+    display:flex;
+    float:left;
+    padding: .25rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    background-color: rgba(255, 250, 246, 0.8);
+}
+
+.topnav a {
+    display: flex;
+    float: left;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    font-family: Segoe UI;
+	font-size: 2rem;
+    padding:.5rem;
+    padding-left:2.5rem;
+    padding-right:2.5rem;
+}
+.topnav a:hover {
+    background-color: rgb(50,60,120);
+    color:rgb(255, 250, 0);
+}
+
+.challenge 	h1 {
+	text-align: center;
+	font-family: "Comic Sans MS", cursive, sans-serif
+
+}
+
+.code {
+	text-align: center;
+}
+
+.editor {
+		width: 50%;
+		height: 70%;
+		background-color: white;
+		padding: 8px;
+	
+
+}
+
+.submitter {
+	margin-left: 400px;
+}
+
+.select {
+	margin-left: 400px;
+}
+
+.testCase {
+	list-style-type: none;
+}
+
+	
