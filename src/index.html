@@ -1,10 +1,32 @@
 <html>
     <head>
-        <link rel="stylesheet" href="./styles/index.css">
+        <link type='text/css' rel="stylesheet" href="/styles/index.css">
         <title>YeetCode</title>
-        <script type="text/javascript" src="./scripts/index.js"></script>
+        <script type="text/javascript" src="/scripts/index.js"></script>
     </head>
     <body>
-        <h1>Login</h1>
+        <div class='tab-container'>
+            <button class='tab-navigation' onClick='openTab(event, "Login")' id="default">Log In</button>
+            <button class='tab-navigation' onClick='openTab(event, "Register")'>Register</button>
+        </div>
+        <div id='Login' class='tab-content'>
+            <h1>Login</h1>
+            <form action='/verify' method='/get'>
+                <input name='username' type='email' value='foo@bar.com'>
+                <input name='password' type='text' value='password'>
+                <input type='submit' value='Log In'>
+            </form>
+        </div>
+        <div id='Register' class='tab-content'>
+            <h1>Register</h1>
+            <form action='/register' method='/post'>
+                <input name='username' type='email' value='foo@bar.com'>
+                <input name='password' type='text' value='password'>
+                <input type='submit' value='Create Account'>
+            </form>            
+        </div>
+        <script>
+            document.getElementById("default").click();
+        </script>
     </body>
 </html>
