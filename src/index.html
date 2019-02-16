@@ -1,32 +1,64 @@
 <html>
     <head>
-        <link type='text/css' rel="stylesheet" href="/styles/index.css">
+        <link type="text/css" rel="stylesheet" href="/styles/index.css">
         <title>YeetCode</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="/scripts/index.js"></script>
     </head>
     <body>
-        <div class='tab-container'>
-            <button class='tab-navigation' onClick='openTab(event, "Login")' id="default">Log In</button>
-            <button class='tab-navigation' onClick='openTab(event, "Register")'>Register</button>
+        <div class="tab-container">
+            <button class="tab-navigation" onClick="openTab(event, 'Login')" id="default">Log In</button>
+            <button class="tab-navigation" onClick="openTab(event, 'Register')">Register</button>
         </div>
-        <div id='Login' class='tab-content'>
+        <div id="Login" class="tab-content">
             <h1>Login</h1>
-            <form action='/verify' method='/get'>
-                <input name='username' type='email' value='foo@bar.com'>
-                <input name='password' type='text' value='password'>
-                <input type='submit' value='Log In'>
+            <form id="loginForm" action="/verify">
+                <input name="username" type="email" placeholder="foo@bar.com"><br>
+                <input name="password" type="password" placeholder="Password"><br>
+                <input type="submit" value="Log In">
             </form>
         </div>
-        <div id='Register' class='tab-content'>
+        <div id="Register" class="tab-content">
             <h1>Register</h1>
-            <form action='/register' method='/post'>
-                <input name='username' type='email' value='foo@bar.com'>
-                <input name='password' type='text' value='password'>
-                <input type='submit' value='Create Account'>
-            </form>            
+            <form name="registerForm" id="registerForm" action="/register">
+                <fieldset id='regWrapper'>
+                    <input name="username" type="email" placeholder="foo@bar.com" required><br>
+                    <input name="password" type="password" placeholder="Password" required><br>
+                    <input type="submit" value="Create Account">
+                </fieldset>
+            </form>         
+            <form name="confForm" id="confForm" action="/confirm" method="POST"></form>   
         </div>
         <script>
             document.getElementById("default").click();
+            
+            $('form[name=registerForm]').submit(function(){
+                $.post($(this).attr('action'), $(this).serialize(), function(response){
+                    console.log(response);
+                    if(response.success){
+                        uname = response.username;
+                        $('#regWrapper').prop("disabled",true);
+                        addConfCodeField()
+                    }
+                    else {
+                        alert(response.reason);
+                    }
+                }, 'json');
+                return false;
+            });
+
+            var uname;
+            function addConfCodeField() {
+                $('#confForm').html('<p>A confirmation code has been sent to: ' + uname + '</p>'+
+                    '<input name="conf_code" type="text" placeholder="Confirmation Code" required><br>' + 
+                    '<input type="submit" value="Confirm Account">');
+                console.log('added conf code field');
+            }
+
+            $('form[name=confForm]').submit(function(){
+                $('#confForm').append('<input name="username" type="hidden" value="'+uname+'">');
+                return true;
+            });
         </script>
     </body>
 </html>

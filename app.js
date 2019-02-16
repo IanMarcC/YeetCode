@@ -54,68 +54,113 @@ app.get('/styles/index.css', function(req, res){
     res.sendFile(path.join(__dirname + '/src/styles/index.css'));
 });
 
-//
+//Register an account on AWS Cognito
 app.post('/register', function(req, res){
-    console.log(req.body.username);
-    console.log(req.body.password);
-    res.redirect('/view')
+    console.log('Creating Account\nUsername:', req.body.username,'\nPassword:', req.body.password);
+    registerUser({username: req.body.username, password: req.body.password}).then(function(user){
+        console.log('Account Created:', user.getUsername());
+        res.json({success:true, username: user.getUsername()});
+    }).catch(function(err){
+        if(err.code == 'UsernameExistsException') {
+            res.json({success:false, reason:'That email has already been registered'});
+        }
+        else if(err.code == 'InvalidParameterException') {
+            res.json({success:false, reason:'Password does not meet security requirements'});
+        }
+        else {
+            console.log('Error Creating Account', err);
+            res.statusMessage = 'Error Creating Account';
+            res.sendStatus(500);
+        }
+    });
 });
 
-function registerUser() {
-    var attributeList = []
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name: "email", Value: "aditeshk@uci.edu"}));
-    // attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name: "solved", Value: 0}));
+//Confirm that the email is valid
+app.post('/confirm', function(req, res){
+    console.log('Confirming Account\nUsername:', req.body.username, '\nConfirmation Code', req.body.conf_code);
+    confirm(req.body.username, req.body.conf_code).then(function(result){
+        res.redirect('/view');
+    }).catch(function(err){
+        console.log('Error confirming account:', err);
+        res.json({error: 'Error Confirming Account'});
+    });
+});
 
-    userPool.signUp('aditeshk@uci.edu', 'Y33tcode!', attributeList, null, function(err, result){
-        if(err) {
-            console.log('Error creating account', err);
-            return;
-        }
-        user = result.user;
-        console.log('username is ' + user.getUsername());
+//Verify the users credentials
+app.get('/verify', function(req, res){
+    console.log('Verifying Credentials\nUsername:', req.query.username, '\nPassword:', req.query.password);
+    login(req.query.username, req.query.password).then(function(tokens){
+        console.log(tokens);
+        res.redirect('/view');
+    }).catch(function(err){
+        console.log(err.code);
+    });
+});
+
+function registerUser(params) {
+    return new Promise(function(resolve, reject){
+        var attributeList = []
+        attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name: "email", Value: params.username}));
+        // attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name: "solved", Value: 0}));
+    
+        userPool.signUp(params.username, params.password, attributeList, null, function(err, result){
+            if(err) {
+                console.log('Error creating account', err);
+                reject(err);
+            }
+            else {
+                user = result.user;
+                resolve(user);
+            }
+        });
     });
 }
-// registerUser();
 
-function confirm(pin) {
-    var userData = {
-        Username : 'aditeshk@uci.edu',
-        Pool : userPool
-    };
-    var user = new AmazonCognitoIdentity.CognitoUser(userData);
-    user.confirmRegistration(pin, true, function(err, result) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        console.log('call result: ' + result);
+function confirm(username, code) {
+    return new Promise(function(resolve, reject){
+        var userData = {
+            Username : username,
+            Pool : userPool
+        };
+        var user = new AmazonCognitoIdentity.CognitoUser(userData);
+        user.confirmRegistration(code, true, function(err, result) {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(result);
+            }
+        });
     });
 }
-// confirm('387198');
 
-function login() {
-    var authDetails = new AmazonCognitoIdentity.AuthenticationDetails({
-        Username: 'aditeshk@uci.edu',
-        Password: 'Y33tcode!'
-    });
-
-    var userData = {
-        Username: 'aditeshk@uci.edu',
-        Pool: userPool
-    }
-    var user = new AmazonCognitoIdentity.CognitoUser(userData);
-    user.authenticateUser(authDetails, {
-        onSuccess: function(result) {
-            console.log('access token + ' + result.getAccessToken().getJwtToken());
-            console.log('id token + ' + result.getIdToken().getJwtToken());
-            console.log('refresh token + ' + result.getRefreshToken().getToken());
-        },
-        onFailure: function(err) {
-            console.log('Error logging in', err);
+function login(username, password) {
+    return new Promise(function(resolve, reject){
+        var authDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+            Username: username,
+            Password: password
+        });
+    
+        var userData = {
+            Username: username,
+            Pool: userPool
         }
+        var user = new AmazonCognitoIdentity.CognitoUser(userData);
+        user.authenticateUser(authDetails, {
+            onSuccess: function(result) {
+                resolve({
+                    access_token: result.getAccessToken().getJwtToken(),
+                    id_token: result.getIdToken().getJwtToken(),
+                    refresh_token: result.getRefreshToken().getToken()
+                });
+            },
+            onFailure: function(err) {
+                console.log('Error logging in', err);
+                reject(err);
+            }
+        });
     });
 }
-// login();
 
 
 //Start Server
