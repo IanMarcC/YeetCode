@@ -1,0 +1,34 @@
+
+
+.challenge 	h1 {
+	text-align: center;
+	font-family: "Comic Sans MS", cursive, sans-serif
+
+}
+
+.code {
+	text-align: center;
+}
+
+.editor {
+		width: 50%;
+		height: 70%;
+		background-color: white;
+		padding: 8px;
+	
+
+}
+
+.submitter {
+	margin-left: 400px;
+}
+
+.select {
+	margin-left: 400px;
+}
+
+.testCase {
+	list-style-type: none;
+}
+
+	

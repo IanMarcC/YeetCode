@@ -1,10 +1,39 @@
 <html>
     <head>
-        <link rel="stylesheet" href="./styles/index.css">
+        <link rel="stylesheet" href="./styles/code.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script  src="./scripts/code.js"></script>
         <title>YeetCode</title>
-        <script type="text/javascript" src="./scripts/index.js"></script>
+
     </head>
     <body>
-        <h1>Code</h1>
+
+    	<div class="challenge">
+    		<h1>Complete the Challenge</h1>
+    	</div>
+    	<div class="code"">
+    		<form>
+    			<select name="languages" class="select">
+    				<option value="python">Python</option>
+    				<option value="C++">C++</option>
+    				<option value="Java">Java</option>
+
+    			</select><br><br>
+    			<textarea placeholder="Enter code here" name="message" rows="25" cols="70"></textarea><br><br>
+    			<input type="button" value="Submit" class="submitter" onclick="submitter(languages, message);">
+
+    		</form>
+    	</div>
+
+    	<ul id="testCases">
+    	</ul>
+
+    	<p id="testing">
+
+
+    	</p>
+
+
+
     </body>
 </html>
