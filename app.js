@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 
 //AWS libraries
 const AWS = require('aws-sdk');
+// const S3 = new AWS.S3
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const config = require('./aws-config.json');
 const request = require('request');
@@ -16,6 +17,7 @@ global.fetch = require('node-fetch');
 const PORT = 8000;
 var app = express();
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, '/src/')));
 
 //AWS Cognito SetUp
 const poolData = {
@@ -42,16 +44,6 @@ app.get('/code', function(req, res){
 //Create a coding problem page
 app.get('/create', function(req, res){
     res.sendFile(path.join(__dirname + '/src/create.html'));
-});
-
-//Basic scripts
-app.get('/scripts/index.js', function(req, res){
-    res.sendFile(path.join(__dirname + '/src/scripts/index.js'));
-});
-
-//Styling
-app.get('/styles/index.css', function(req, res){
-    res.sendFile(path.join(__dirname + '/src/styles/index.css'));
 });
 
 //Register an account on AWS Cognito
