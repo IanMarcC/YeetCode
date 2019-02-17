@@ -2,16 +2,17 @@ const express = require('express');
 const path = require('path');
 var bodyParser = require('body-parser');
 
-//AWS libraries
+//AWS Set Up
 const AWS = require('aws-sdk');
-// const S3 = new AWS.S3
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-const config = require('./aws-config.json');
 const request = require('request');
 const jwkToPem = require('jwk-to-pem');
 const jwt = require('jsonwebtoken');
 global.fetch = require('node-fetch');
 
+AWS.config.loadFromPath('./aws-config.json');
+var s3bucket = new AWS.S3({params:{Bucket:'yeetcode'}});
+const config = require('./cognito-config.json');
 
 //Setting up express app
 const PORT = 8000;
@@ -154,6 +155,41 @@ function login(username, password) {
     });
 }
 
+app.get('/challenges', function(req, res){
+    var count = req.query.count ? req.query.count : 10;
+    params = {
+        MaxKeys: count,
+        Prefix: 'challenges/challenge'
+    }
+    s3bucket.listObjectsV2(params, async function(err, data){
+        if(err) {
+            console.log(err);
+            res.json({success: false, message: err.message});
+            return;
+        }
+        var problems = data.Contents;
+        var results = problems.map(async problem => {
+            const data = await loadS3Data(problem.Key);
+            data.Body = JSON.parse(data.Body.toString('utf8'));
+            return data;
+        });
+        var response = await Promise.all(results);
+        res.json({success: true, problems: response});
+    });
+});
+
+function loadS3Data(path) {
+    return new Promise(function(resolve, reject){
+        s3bucket.getObject({Key: path}, function(err, data){
+            if(err) {
+                reject(err);
+            }
+            else{
+                resolve(data);
+            }
+        });
+    });
+}
 
 //Start Server
 app.listen(process.env.PORT||PORT, function(){
