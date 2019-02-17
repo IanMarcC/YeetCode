@@ -74,8 +74,13 @@ select {
     font-size: 2rem;
     float: left;
     margin: 1rem;
-    padding-left:2rem;
-    padding-right:2rem;
+    margin-top:.5rem;
+    padding-left:2.5rem;
+    padding-right:2.5rem;
+    background-image: url("/images/yeetcode_logo.png");
+    width:110px;
+    height:60px;
+    background-size:cover;
 }
 
 @keyframes fadeEffect {
