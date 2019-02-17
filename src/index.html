@@ -1,47 +1,33 @@
 <html>
     <head>
         <link type="text/css" rel="stylesheet" href="/styles/index.css">
-        <link rel="icon" type="image/ico" href="/images/favicon.ico">
         <title>YeetCode</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="/scripts/index.js"></script>
     </head>
     <body>
-        <div class="topnav">
-            <div id="logo" class="logo"></div>
-            <div id="signin" class="nav">Sign In</div>
-            <div id="about" class="nav">About</div>
+        <div class="tab-container">
+            <button class="tab-navigation" onClick="openTab(event, 'Login')" id="default">Log In</button>
+            <button class="tab-navigation" onClick="openTab(event, 'Register')">Register</button>
         </div>
-        <div class='triangle t1'></div>
-        <div class='triangle t2'></div>
-        <div class='triangle t3'></div>
-        <div class='triangle t4'></div>
-        <div id='slogan' class='message' style="font-size: 75px;">Success Through Failure</div>
-        <div id='description' class='message' style="font-size: 18px; display:none;">Learning how to code is difficult. There are a lot of failures along the way. However, failures are a great catalyst for success. At YeetCode, we believe that if you know enough incorrect solutions to a problem, you can derive the correct answer. Practicing with YeetCode will help you learn all the approaches that don't work, so that when you are faced with an important task you can easily avoid suboptimal solutions.</div>
-        <div class="floater">
-            <div class="tab-container">
-                <button class="tab-navigation" style="border-radius: 10px 0px 0px 0px;" onClick="openTab(event, 'Login')" id="default">Sign In</button>
-                <button class="tab-navigation" style="border-radius: 0px 10px 0px 0px;" onClick="openTab(event, 'Register')">Register</button>
-            </div>
-            <div id="Login" class="tab-content">
-                <form id="loginForm" action="/verify">
-                    <fieldset>
-                        <input name="username" type="email" placeholder="foo@bar.com"><br>
-                        <input name="password" type="password" placeholder="Password"><br>
-                        <input class="submit" type="submit" value="Log In">
-                    </fieldset>
-                </form>
-            </div>
-            <div id="Register" class="tab-content">
-                <form name="registerForm" id="registerForm" action="/register">
-                    <fieldset id='regWrapper'>
-                        <input name="username" type="email" placeholder="foo@bar.com" required><br>
-                        <input name="password" type="password" placeholder="Password" required><br>
-                        <input class="submit" type="submit" value="Create Account">
-                    </fieldset>
-                </form>         
-                <form name="confForm" id="confForm" action="/confirm" method="POST"></form>   
-            </div>
+        <div id="Login" class="tab-content">
+            <h1>Login</h1>
+            <form id="loginForm" action="/verify">
+                <input name="username" type="email" placeholder="foo@bar.com"><br>
+                <input name="password" type="password" placeholder="Password"><br>
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+        <div id="Register" class="tab-content">
+            <h1>Register</h1>
+            <form name="registerForm" id="registerForm" action="/register">
+                <fieldset id='regWrapper'>
+                    <input name="username" type="email" placeholder="foo@bar.com" required><br>
+                    <input name="password" type="password" placeholder="Password" required><br>
+                    <input type="submit" value="Create Account">
+                </fieldset>
+            </form>         
+            <form name="confForm" id="confForm" action="/confirm" method="POST"></form>   
         </div>
         <script>
             document.getElementById("default").click();
@@ -73,23 +59,6 @@
                 $('#confForm').append('<input name="username" type="hidden" value="'+uname+'">');
                 return true;
             });
-
-            $('#logo').click(function(){
-                window.location.replace('/');
-            });
-
-            $('#signin').click(function(){
-                $('#slogan').css('display','none');
-                $('#description').css('display', 'none');
-                $('.floater').css('display','inline-block');
-            });
-
-            $('#about').click(function(){
-                $('.floater').css('display','none');
-                $('#slogan').css('display', 'none');
-                $('#description').css('display','block');
-            });
-
         </script>
     </body>
 </html>

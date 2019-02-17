@@ -9,7 +9,7 @@ body {
     /*
 	background-color: rgb(67, 66, 90);
     */
-    
+
 	background-size: initial;
 }
 .topnav {
@@ -46,16 +46,25 @@ body {
 .topnav a:hover {
     background-color: rgb(50,60,120);
     color:rgb(255, 250, 0);
-    animation: fadeEffect 1s;
 }
-@keyframes fadeEffect {
-    from {opacity: .5;}
-    to {opacity: 1;}
+
+
+
+.list{
+    background-color: #0b3c5d;
+    margin-left:25%;
+    margin-right:25%;
+		min-height: 100%;
+}
+
+.buffered{
+	padding: .2em;
 }
 
 .challenge 	h1 {
 	text-align: center;
-	font-family: "Comic Sans MS", cursive, sans-serif
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: whitesmoke;
 
 }
 
@@ -68,20 +77,41 @@ body {
 		height: 70%;
 		background-color: white;
 		padding: 8px;
-	
+
 
 }
 
-.submitter {
-	margin-left: 400px;
-}
+
 
 .select {
 	margin-left: 400px;
+}
+
+#testCases {
+	margin-top: 0px;
+	color: white;
 }
 
 .testCase {
 	list-style-type: none;
 }
 
-	
+.enclosingCase {
+	list-style-type: none;
+}
+
+.box {
+	list-style-type: none;
+}
+
+
+
+
+.submitter{
+		margin-left: 400px;
+    color: #333;
+    font-family: Segoe UI;
+    border:none;
+    padding:1em;
+    background: yellow;
+}

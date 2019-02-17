@@ -9,7 +9,7 @@ body {
     /*
 	background-color: rgb(67, 66, 90);
     */
-    
+
 	background-size: initial;
 }
 page-description{
@@ -33,21 +33,10 @@ dt{
     padding-left: 1rem;
     padding-right:1rem;
 }
-
 dt a{
     color: whitesmoke;
     text-decoration:none;
     word-wrap: break-word;
-}
-dt a:hover{
-    color:rgb(255, 250, 0);
-    animation: fadeEffect 1s;
-    
-}
-dt:hover{
-    background-color: rgb(50,60,120);
-    color:rgb(255, 250, 0);
-    animation: fadeEffect 1s;
 }
 dd{
     word-wrap:break-word;
@@ -67,7 +56,6 @@ dd{
 
 .topnav {
     overflow: hidden;
-    display:flex;
     background-color: rgba(255, 250, 246, 0.8);
     margin-top: 0px;
     line-height: 5rem;
@@ -86,12 +74,10 @@ dd{
     padding:.2em;
 }
 
-.v_button{
-    color: #333;
-    font-family: Segoe UI;
-    border:none;
-    padding:1em;
-    background: yellow;
+.button {
+	float: right;
+	display: inline-block;
+	margin-left: 70%;
 }
 
 .logo {
@@ -118,11 +104,8 @@ dd{
 .topnav a:hover {
     background-color: rgb(50,60,120);
     color:rgb(255, 250, 0);
-    animation: fadeEffect 1s;
 }
 
-@keyframes fadeEffect {
-    from {opacity: .5;}
-    to {opacity: 1;}
+.problemListing {
+	display: flex;
 }
-
