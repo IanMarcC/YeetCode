@@ -1,3 +1,4 @@
+
 body {
 	height: 100%;
 	margin: 0;
@@ -5,7 +6,7 @@ body {
     color: black;
 	width: 100%;
 	font-family: Comic Sans MS, cursive, serif;
-    background-color: 328cc1;
+    background-color: #328cc1;
     /*
 	background-color: rgb(67, 66, 90);
     */
@@ -48,40 +49,29 @@ body {
     color:rgb(255, 250, 0);
     animation: fadeEffect 1s;
 }
+
 @keyframes fadeEffect {
     from {opacity: .5;}
     to {opacity: 1;}
 }
 
-.challenge 	h1 {
-	text-align: center;
-	font-family: "Comic Sans MS", cursive, sans-serif
-
-}
-
 .code {
+    color:white;
 	text-align: center;
+    background-color: #0b3c5d;
+    margin-left:25%;
+    margin-right:25%;
+    height:100%;
+    border-radius: 50px;
+}
+.textareas{
+    background-color: #0b3c5d;
+    
+    resize:none;
+    border-radius: 100px;
+    padding:2rem;
+    border-radius: 20px;
 }
 
-.editor {
-		width: 50%;
-		height: 70%;
-		background-color: white;
-		padding: 8px;
-	
 
-}
 
-.submitter {
-	margin-left: 400px;
-}
-
-.select {
-	margin-left: 400px;
-}
-
-.testCase {
-	list-style-type: none;
-}
-
-	
