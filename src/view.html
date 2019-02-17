@@ -1,33 +1,28 @@
 <html>
     <head>
         <link rel="stylesheet" href="./styles/view.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
         <title>YeetCode</title>
         <script type="text/javascript" src="./scripts/view.js"></script>
     </head>
     <body>
         <div class="logo"><h1>YeetCode Problems</h1></div>
-
+        
         <div class="topnav">
                 <a href="index.html">Home</a>
                 <a href="code.html">Code</a>
                 <a href="create.html">Create</a>
                 <a href="view.html">View Problems</a>
         </div>
-
+        
         <div class="p-list">
             <div class='buffer'></div>
-            <select name="languages" class="select", id="language" onchange="newChallenges()">
-      				<option value="Python">Python</option>
-      				<option value="C++">C++</option>
-      				<option value="Java">Java</option>
-
-      			</select><br><br>
             <dl id="problem-list">
             </dl>
+            <input type="text" id="problem"/>
+        <button class="v_button" onclick="expandList()">More Problems</button>
+        <script src="view.js"></script>
         </div>
-
-
+        
+        
     </body>
 </html>

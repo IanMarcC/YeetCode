@@ -83,7 +83,7 @@ app.post('/confirm', function(req, res){
 app.get('/verify', function(req, res){
     console.log('Verifying Credentials\nUsername:', req.query.username, '\nPassword:', req.query.password);
     login(req.query.username, req.query.password).then(function(tokens){
-        console.log(tokens);
+        console.log('Tokens acquired');
         res.redirect('/view');
     }).catch(function(err){
         console.log(err.code);
@@ -155,6 +155,7 @@ function login(username, password) {
     });
 }
 
+var total_challenges;
 app.get('/challenges', function(req, res){
     var count = req.query.count ? req.query.count : 10;
     params = {
@@ -174,6 +175,7 @@ app.get('/challenges', function(req, res){
             return data;
         });
         var response = await Promise.all(results);
+        total_challenges = response.length;
         res.json({success: true, problems: response});
     });
 });
@@ -190,6 +192,45 @@ function loadS3Data(path) {
         });
     });
 }
+
+app.post('/submit', function(req, res){
+    total_challenges++;
+    var params = {
+        Body: JSON.stringify({
+            name: req.body.title,
+            language: req.body.language,
+            description: req.body.prompt,
+            votes: 0,
+            function_body: req.body.funct,
+            test_cases: "" 
+        }),
+        Key: "challenges/challenge" + total_challenges + ".json"
+    }
+    s3bucket.putObject(params, function(err, data){
+        if(err) {
+            console.log(err);
+            res.status(500).send('There was an error creating your submission');
+        }
+        else {
+            res.redirect('/view');
+        }
+    })
+});
+
+const {c, cpp, node, python, java} = require('compile-run');
+const sourcecode = `print("1+1)`;
+python.runSource(sourcecode).then(function(result){
+    if(result.stderr) {
+        var out = result.stderr.split('\n');
+        console.log(out[out.length-2].split(' ')[0].replace(':',''));
+    }
+    else{
+        console.log(result.stdout);
+    }
+})
+.catch(function(err){
+    console.log(err);
+});
 
 //Start Server
 app.listen(process.env.PORT||PORT, function(){
