@@ -218,6 +218,9 @@ app.post('/submit', function(req, res){
 });
 
 app.get('/loadChallenge', function(req, res){
+    if(!req.query.file){
+        res.redirect('/view');
+    }
     loadS3Data('challenges/' + req.query.file).then(function(response){
         var data = JSON.parse(response.Body.toString('utf8'));
         res.json({data: data});
@@ -227,20 +230,20 @@ app.get('/loadChallenge', function(req, res){
     });
 });
 
-const {c, cpp, node, python, java} = require('compile-run');
-const sourcecode = `print("1+1)`;
-python.runSource(sourcecode).then(function(result){
-    if(result.stderr) {
-        var out = result.stderr.split('\n');
-        console.log(out[out.length-2].split(' ')[0].replace(':',''));
-    }
-    else{
-        console.log(result.stdout);
-    }
-})
-.catch(function(err){
-    console.log(err);
-});
+// const {c, cpp, node, python, java} = require('compile-run');
+// const sourcecode = `print("Starting npm compile-run")`;
+// python.runSource(sourcecode).then(function(result){
+//     if(result.stderr) {
+//         var out = result.stderr.split('\n');
+//         console.log(out[out.length-2].split(' ')[0].replace(':',''));
+//     }
+//     else{
+//         console.log(result.stdout);
+//     }
+// })
+// .catch(function(err){
+//     console.log(err);
+// });
 
 //Start Server
 app.listen(process.env.PORT||PORT, function(){

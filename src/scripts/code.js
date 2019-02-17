@@ -49,8 +49,6 @@ function params() {
 	//Li.append(document.getElementsByClassName("buffered")[0])
 	Li.innerHTML+="<br>"
 	f.append(Li)
-
-
 }
 
 

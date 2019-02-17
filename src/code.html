@@ -18,21 +18,20 @@
         <div class='triangle t3'></div>
         <div class='triangle t4'></div>
         <div class="list" id="list">
-            <div class="buffered"></div>
             <div class="challenge" id="challenge">
                 <h1 id="title"></h1>
                 <p id="description"></p>
                 <code id="function_body"></code>
+                <p>How many failing test cases can you write?</p>
+                <button id="add" class="submitter" onclick="params()">Add Test Case</button>
+                <div class="code">
+                    <form id="testform" action='/test' method='POST'>
+                        <input type="submit" class="submitter" onclick="submitter(cases)">
+                        <ol id="cases"></ol><br>
+                    </form>
+                    <ul id="testCases"></ul>
+                </div>
             </div>
-            <div class="code">
-                <button class="submitter" onclick="params()">Add Test Case</button>
-                <form >
-                    <ol id="cases"></ol>
-                    <input type="submit" class="submitter" onclick="submitter(cases)">
-                </form>
-            </div>
-            <ul id="testCases">
-            </ul>
         </div>
     </body>
     <script>
@@ -46,6 +45,7 @@
             window.location.replace('/create');
         });
 
+        var func_body = '';
         function loadData(){
             var filename = window.location.href.split('=')[1];
             $.get('/loadChallenge?file=' + filename, function(data){
@@ -53,15 +53,28 @@
                     data = data.data;
                     $('#title').append(data.name + " (" + data.language + ")");
                     $('#description').append(data.description);
-                    var func = data.function_body.replace(/\n/g, "<br>");
-                    func = func.replace(/\t/g, "&nbsp;&nbsp;&nbsp;");
+                    var func_body = data.function_body;
+                    var func = func_body.replace(/\n/g, "<br>").replace(/\t/g, "&nbsp;&nbsp;&nbsp;");
                     $('#function_body').append(func);
                 }
                 else {
                     alert('There was an error loading your data');
                     window.location.replace('/view');
                 }
+                return true;
             });
         }
+        var count = 0;
+        $('#add').click(function(){
+            count++;
+            $('#cases').append(count + ')&nbsp;<input type="text" class="testcase" placeholder="(value, ...)"><br>');
+        });
+
+        $('#testform').submit(function(){
+            $.post($(this).attr('action'), $(this).serialize(), function(response){
+                console.log(response);
+            }, 'json');
+            return false;
+        });
     </script>
 </html>
