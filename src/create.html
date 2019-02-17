@@ -1,41 +1,10 @@
 <html>
     <head>
-        <link rel="stylesheet" href="/styles/create.css">
-        <link rel="icon" type="image/ico" href="/images/favicon.ico">
+        <link rel="stylesheet" href="./styles/index.css">
         <title>YeetCode</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./scripts/index.js"></script>
     </head>
     <body>
-        <div class="topnav">
-            <div id="logo" class="logo"></div>
-            <div id="view" class="nav">Challenges</div>
-        </div>
-        <div class='triangle t1'></div>
-        <div class='triangle t2'></div>
-        <div class='triangle t3'></div>
-        <div class='triangle t4'></div>
-        <div class="code">
-    		<form class="createForm" action="/submit" method="POST">
-                <h1>Submit a Challenge</h1>
-                <div class="textareas">    
-                    <input placeholder="Enter problem name here" name="title" type="text" required>
-                    <select name="language" class="select">
-                        <option value="Python">Python</option>
-                        <option value="C++">C++</option>
-                        <option value="Java">Java</option>
-                    </select>
-                    <textarea placeholder="Enter problem description here" name="prompt" rows="10" cols="80" required></textarea><br><br>
-                    <textarea placeholder="Enter function definition here" id="funct" name="funct" rows="40" cols="80" required></textarea><br><br>
-                    <script type="text/javascript" src="/scripts/tab_create.js"></script>
-                    <script type="text/javascript" src="/scripts/create.js"></script>
-                </div>
-                <input type="submit" value="Submit" class="submit">
-    		</form>
-    	</div>
+        <h1>Create</h1>
     </body>
-    <script>
-        $('#view').click(function(){
-            window.location.replace('/view');
-        });
-    </script>
 </html>
