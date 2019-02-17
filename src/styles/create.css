@@ -120,6 +120,8 @@ select {
     background-color: rgb(195, 218, 205);
     padding: 1rem 1.5rem 1rem 1.5rem;
     border-radius: 20px;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
 }
 .code {
     color:rgb(67, 66, 90);

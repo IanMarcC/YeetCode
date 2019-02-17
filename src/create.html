@@ -15,22 +15,27 @@
         <div class='triangle t3'></div>
         <div class='triangle t4'></div>
         <div class="code">
-    		<form class='createForm'>
-                <h1>Create</h1>
+    		<form class="createForm" action="/submit" method="POST">
+                <h1>Submit a Challenge</h1>
                 <div class="textareas">    
-                    <input placeholder="Enter problem name here" name="titl" type="text" required>
-                    <select name="languages" class="select">
-                        <option value="python">Python</option>
+                    <input placeholder="Enter problem name here" name="title" type="text" required>
+                    <select name="language" class="select">
+                        <option value="Python">Python</option>
                         <option value="C++">C++</option>
                         <option value="Java">Java</option>
                     </select>
                     <textarea placeholder="Enter problem description here" name="prompt" rows="10" cols="80" required></textarea><br><br>
-                    <textarea placeholder="Enter function definition here" id="funct"name="funct" rows="40" cols="80" required></textarea><br><br>
-                    <script type="text/javascript" src="./scripts/tab_create.js"></script>
-                    <script type="text/javascript" src="./scripts/create.js"></script>
+                    <textarea placeholder="Enter function definition here" id="funct" name="funct" rows="40" cols="80" required></textarea><br><br>
+                    <script type="text/javascript" src="/scripts/tab_create.js"></script>
+                    <script type="text/javascript" src="/scripts/create.js"></script>
                 </div>
-                <input type="button" value="Submit" class="submitter submit" onclick="requestHandler(languages.value, titl.value, prompt.value, funct.value)">
+                <input type="submit" value="Submit" class="submit">
     		</form>
     	</div>
     </body>
+    <script>
+        $('#view').click(function(){
+            window.location.replace('/view');
+        });
+    </script>
 </html>

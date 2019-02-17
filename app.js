@@ -191,6 +191,31 @@ function loadS3Data(path) {
     });
 }
 
+var count = 2;
+app.post('/submit', function(req, res){
+    var params = {
+        Body: JSON.stringify({
+            name: req.body.title,
+            language: req.body.language,
+            description: req.body.prompt,
+            votes: 0,
+            function_body: req.body.funct,
+            test_cases: "" 
+        }),
+        Key: "challenges/challenge" + count + ".json"
+    }
+    count++;
+    s3bucket.putObject(params, function(err, data){
+        if(err) {
+            console.log(err);
+            res.status(500).send('There was an error creating your submission');
+        }
+        else {
+            res.redirect('/view');
+        }
+    })
+});
+
 const {c, cpp, node, python, java} = require('compile-run');
 const sourcecode = `print("1+1)`;
 python.runSource(sourcecode).then(function(result){

@@ -1,6 +1,5 @@
-
-
-document.getElementById("funct").addEventListener('keydown',function(e) {
+console.log('tab_create imported');
+document.getElementById("funct").addEventListener('keydown', function(e) {
     if(e.keyCode === 9) { // tab was pressed
         // get caret position/selection
         var start = this.selectionStart;
