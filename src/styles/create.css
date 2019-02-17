@@ -1,76 +1,138 @@
-
 body {
-	height: 100%;
-	margin: 0;
+    height: 100%;
+    padding: 0;
 	text-align: center;
-    color: black;
+    color: rgb(240, 220, 40);
 	width: 100%;
 	font-family: Comic Sans MS, cursive, serif;
-    background-color: #328cc1;
-    /*
-	background-color: rgb(67, 66, 90);
-    */
-    
-	background-size: initial;
+    /* background-color: #328cc1; */
+    /* background-color: rgb(50,60,120); */
+	background-color: rgb(77, 76, 100);
+    background-size: initial;
+    overflow: hidden;
 }
+
+input {
+    font-size: 14px;
+    color: rgb(67, 66, 90);
+    font-family: Comic Sans MS, cursive, serif;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
+}
+.submit {
+    background-color: rgb(77, 76, 100);
+    color: rgb(240, 220, 40);
+}
+textarea {
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    resize: none;
+    border: none;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
+}
+select {
+    border-radius: 10px;
+    color: rgb(67, 66, 90);
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
+}
+
 .topnav {
     overflow: hidden;
-    background-color: rgba(255, 250, 246, 0.8);
+    /* background-color: rgba(255, 250, 246, 0.8); */
     margin-top: 0px;
-    line-height: 5rem;
-    /*border-style: solid;
-    */border-width: medium;
-    border-left-width:0%;
+    line-height: 3rem;
+    display: block;
+    padding-right: 30px;
 }
-
-.logo {
-    display:flex;
-    float:left;
-    padding: .25rem;
-    padding-left:1rem;
-    padding-right:1rem;
-    background-color: rgba(255, 250, 246, 0.8);
-}
-
-.topnav a {
-    display: flex;
-    float: left;
-    color: #333;
+.topnav div {
     text-align: center;
-    text-decoration: none;
-    font-family: Segoe UI;
-	font-size: 2rem;
-    padding:.5rem;
-    padding-left:2.5rem;
-    padding-right:2.5rem;
 }
-.topnav a:hover {
-    background-color: rgb(50,60,120);
-    color:rgb(255, 250, 0);
-    animation: fadeEffect 1s;
+.nav {
+    float: right;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 30px;
+    margin: 1.5rem 1.5rem 1rem 1.5rem;
+    border-bottom: 2px solid transparent;
+}
+.nav:hover {
+    border-bottom: 2px solid rgb(240, 220, 40);
+}
+.logo {
+    font-family: Comic Sans MS, cursive, serif;
+    cursor: pointer;
+    font-size: 2rem;
+    float: left;
+    margin: 1rem;
+    padding-left:2rem;
+    padding-right:2rem;
 }
 
 @keyframes fadeEffect {
     from {opacity: .5;}
     to {opacity: 1;}
 }
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+.t1 {
+    top: 0;
+    left: 0;
+    border-top: 150px solid #328cc1;
+    border-right: 700px solid transparent;
+    z-index: -2;
+}
+.t2 {
+    top: 0;
+    left: 0;
+    border-top: 150px solid rgb(50,60,120);
+    border-right: 500px solid transparent;
+    z-index: -1;
+}
+.t3 {
+    bottom: 0;
+    right: 0;
+    border-bottom: 150px solid rgb(50,60,120);
+    border-left: 500px solid transparent;
+    z-index: -1;
+}
+.t4 {
+    bottom: 0;
+    right: 0;
+    border-bottom: 150px solid #328cc1;
+    border-left: 700px solid transparent;
+    z-index: -2;
+}
 
+.createForm {
+    background-color: rgb(195, 218, 205);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 20px;
+}
 .code {
-    color:white;
+    color:rgb(67, 66, 90);
 	text-align: center;
-    background-color: #0b3c5d;
+    background-color: rgb(195, 218, 205);
     margin-left:25%;
     margin-right:25%;
-    height:100%;
     border-radius: 50px;
 }
 .textareas{
-    background-color: #0b3c5d;
-    
-    resize:none;
-    border-radius: 100px;
-    padding:2rem;
-    border-radius: 20px;
+    height: 275px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 

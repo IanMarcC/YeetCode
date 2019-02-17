@@ -1,34 +1,35 @@
 <html>
     <head>
-        <link rel="stylesheet" href="./styles/create.css">
+        <link rel="stylesheet" href="/styles/create.css">
+        <link rel="icon" type="image/ico" href="/images/favicon.ico">
         <title>YeetCode</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        <div class="logo"><h1>YeetCode Problems</h1></div>
-        
         <div class="topnav">
-                <a href="index.html">Home</a>
-                <a href="code.html">Code</a>
-                <a href="create.html">Create</a>
-                <a href="view.html">View Problems</a>
+            <div id="logo" class="logo">YeetCode</div>
+            <div id="view" class="nav">Challenges</div>
         </div>
+        <div class='triangle t1'></div>
+        <div class='triangle t2'></div>
+        <div class='triangle t3'></div>
+        <div class='triangle t4'></div>
         <div class="code">
-            <h1>Create</h1>
-        
-    		<form>
-                <select name="languages" class="select">
-    				<option value="python">Python</option>
-    				<option value="C++">C++</option>
-    				<option value="Java">Java</option>
-                </select><br><br>
-            <div class="textareas">
-    			<textarea placeholder="Enter problem name here" name="titl" rows="1" cols="80" required></textarea><br><br>
-                <textarea placeholder="Enter problem description here" name="prompt" rows="10" cols="80" required></textarea><br><br>
-                <textarea placeholder="Enter function definition here" id="funct"name="funct" rows="40" cols="80" required></textarea><br><br>
-                <input type="button" value="Submit" class="submitter" onclick="requestHandler(languages.value, titl.value, prompt.value, funct.value)">
-                <script type="text/javascript" src="./scripts/tab_create.js"></script>
-                <script type="text/javascript" src="./scripts/create.js"></script>
+    		<form class='createForm'>
+                <h1>Create</h1>
+                <div class="textareas">    
+                    <input placeholder="Enter problem name here" name="titl" type="text" required>
+                    <select name="languages" class="select">
+                        <option value="python">Python</option>
+                        <option value="C++">C++</option>
+                        <option value="Java">Java</option>
+                    </select>
+                    <textarea placeholder="Enter problem description here" name="prompt" rows="10" cols="80" required></textarea><br><br>
+                    <textarea placeholder="Enter function definition here" id="funct"name="funct" rows="40" cols="80" required></textarea><br><br>
+                    <script type="text/javascript" src="./scripts/tab_create.js"></script>
+                    <script type="text/javascript" src="./scripts/create.js"></script>
                 </div>
+                <input type="button" value="Submit" class="submitter submit" onclick="requestHandler(languages.value, titl.value, prompt.value, funct.value)">
     		</form>
     	</div>
     </body>

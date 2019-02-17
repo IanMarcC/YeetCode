@@ -41,7 +41,21 @@ fieldset {
     display: block;
     padding-right: 30px;
 }
-
+.topnav div {
+    text-align: center;
+}
+.nav {
+    float: right;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 30px;
+    margin: 1.5rem 1.5rem 1rem 1.5rem;
+    border-bottom: 2px solid transparent;
+}
+.nav:hover {
+    border-bottom: 2px solid rgb(240, 220, 40);
+}
 .logo {
     font-family: Comic Sans MS, cursive, serif;
     cursor: pointer;
@@ -62,24 +76,6 @@ fieldset {
     font-style: italic;
     animation: fadeEffect 2s;
     padding:.5rem;
-}
-
-.topnav div {
-    text-align: center;
-}
-
-.nav {
-    float: right;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 5px;
-    width: 70px;
-    line-height: 30px;
-    margin: 1.5rem 1.5rem 1rem 1.5rem;
-    border-bottom: 2px solid transparent;
-}
-.nav:hover {
-    border-bottom: 2px solid rgb(240, 220, 40);
 }
 
 .floater{
