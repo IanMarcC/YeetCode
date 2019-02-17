@@ -1,13 +1,112 @@
+body {
+    height: 100%;
+    padding: 0;
+	text-align: center;
+    color: rgb(240, 220, 40);
+	width: 100%;
+	font-family: Comic Sans MS, cursive, serif;
+    /* background-color: #328cc1; */
+    /* background-color: rgb(50,60,120); */
+	background-color: rgb(77, 76, 100);
+    background-size: initial;
+    overflow: hidden;
+}
+
+input {
+    font-size: 18px;
+    color: rgb(67, 66, 90);
+    font-family: Comic Sans MS, cursive, serif;
+    padding: 5px;
+    margin: 10px;
+    border-radius:5px;
+    border: none;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
+}
+
+fieldset {
+    border: none;
+}
+
+.submit {
+    background-color: rgb(77, 76, 100);
+    color: rgb(240, 220, 40);
+}
+
+.topnav {
+    overflow: hidden;
+    /* background-color: rgba(255, 250, 246, 0.8); */
+    margin-top: 0px;
+    line-height: 3rem;
+    display: block;
+    padding-right: 30px;
+}
+
+.logo {
+    font-family: Comic Sans MS, cursive, serif;
+    cursor: pointer;
+    font-size: 2rem;
+    float: left;
+    margin: 1rem;
+    padding-left:2rem;
+    padding-right:2rem;
+}
+
+.message {
+    position: absolute;
+    color: rgb(240, 220, 40);
+    background-color: transparent;
+    margin-left: 10%;
+    top: 37.5%;
+    width: 80%;
+    font-style: italic;
+    animation: fadeEffect 2s;
+    padding:.5rem;
+}
+
+.topnav div {
+    text-align: center;
+}
+
+.nav {
+    float: right;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 5px;
+    width: 70px;
+    line-height: 30px;
+    margin: 1.5rem 1.5rem 1rem 1.5rem;
+    border-bottom: 2px solid transparent;
+}
+.nav:hover {
+    border-bottom: 2px solid rgb(240, 220, 40);
+}
+
+.floater{
+    margin-top: 5rem;
+    display: none;
+    width: 30%;
+    background-color: rgb(215, 238, 225);
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
+}
+
 /* Style the tab */
 .tab-container{
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    line-height: 60px;
+    border-bottom: 1px solid #ccc;
+    /* background-color: #f1f1f1; */
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab-container button {
     background-color: inherit;
+    color: rgb(67, 66, 90);
+    font-family: Comic Sans MS, cursive, serif;
+    font-size: 22px;
+    width: 50%;
     float: left;
     border: none;
     outline: none;
@@ -18,19 +117,19 @@
 
 /* Change background color of buttons on hover */
 .tab-container button:hover {
-    background-color: #ddd;
+    background-color: rgb(235, 248, 245);;
 }
 
 /* Create an active/current tablink class */
 .tab-container button.active {
-    background-color: #ccc;
+    background-color: rgb(195, 218, 205);
 }
 
 /* Style the tab content */
 .tab-content {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-top: none;
 }
 
@@ -42,4 +141,38 @@
 @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+.t1 {
+    top: 0;
+    left: 0;
+    border-top: 150px solid #328cc1;
+    border-right: 700px solid transparent;
+    z-index: -2;
+}
+.t2 {
+    top: 0;
+    left: 0;
+    border-top: 150px solid rgb(50,60,120);
+    border-right: 500px solid transparent;
+    z-index: -1;
+}
+.t3 {
+    bottom: 0;
+    right: 0;
+    border-bottom: 150px solid rgb(50,60,120);
+    border-left: 500px solid transparent;
+    z-index: -1;
+}
+.t4 {
+    bottom: 0;
+    right: 0;
+    border-bottom: 150px solid #328cc1;
+    border-left: 700px solid transparent;
+    z-index: -2;
 }
