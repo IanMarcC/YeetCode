@@ -217,6 +217,16 @@ app.post('/submit', function(req, res){
     })
 });
 
+app.get('/loadChallenge', function(req, res){
+    loadS3Data('challenges/' + req.query.file).then(function(response){
+        var data = JSON.parse(response.Body.toString('utf8'));
+        res.json({data: data});
+    }).catch(function(err){
+        console.log(err);
+        res.status(500).send('Could not load data for ' + req.query.file);
+    });
+});
+
 const {c, cpp, node, python, java} = require('compile-run');
 const sourcecode = `print("1+1)`;
 python.runSource(sourcecode).then(function(result){

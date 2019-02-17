@@ -17,7 +17,7 @@ function parser() {
 	obj = arr.pop()
 	fields = obj.split("+")
 	fields = fields.map(field =>{
-		 return (field.split("%20")).join(" ");
+		return (field.split("%20")).join(" ");
 	})
 	//fields[1] = (fields[1].split("%20")).join(" ")
 	console.log(fields)
@@ -34,7 +34,7 @@ function params() {
 	f = document.getElementById("cases")
 	let Li = document.createElement("Li");
 	Li.setAttribute("class", "enclosingCase");
-testCaseNumber+=1
+    testCaseNumber+=1
 	Li.innerHTML+=testCaseNumber;
 	//Li.setAttribute("class", "box")
 	for (var i = 0; i<numParams; i++) {
@@ -57,7 +57,7 @@ testCaseNumber+=1
 function submitter(ol) {
 	console.log(ol)
 	let cases = ol.getElementsByClassName("box")
-	let case = []
+	// let case = []
 	let evals = []
 	for (var i = 0; i<cases.length; i+=numParams) {
 		console.log()

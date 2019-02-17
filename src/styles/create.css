@@ -13,16 +13,17 @@ body {
 }
 
 input {
-    font-size: 14px;
+    font-size: 18px;
     color: rgb(67, 66, 90);
     font-family: Comic Sans MS, cursive, serif;
     padding: 5px;
     margin: 10px;
-    border-radius: 5px;
+    border-radius:5px;
     border: none;
     -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
         box-shadow: 0 0 2px rgb(240, 220, 40);
 }
+
 .submit {
     background-color: rgb(77, 76, 100);
     color: rgb(240, 220, 40);

@@ -1,51 +1,67 @@
 <html>
     <head>
         <link rel="stylesheet" href="./styles/code.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
-        <script  src="./scripts/code.js"></script>
+        <link rel="icon" type="image/ico" href="/images/favicon.ico">
         <title>YeetCode</title>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+        <!-- <script  src="./scripts/code.js"></script> -->
     </head>
-    <body>
-
-        <div class="logo"><h1>YeetCode Problems</h1></div>
-
+    <body onload="loadData()">
         <div class="topnav">
-                <a href="index.html">Home</a>
-                <a href="code.html">Code</a>
-                <a href="create.html">Create</a>
-                <a href="view.html">View Problems</a>
+            <div id="logo" class="logo"></div>
+            <div id="view" class="nav">Browse</div>
+            <div id="create" class="nav">Submit</div>
         </div>
-      <div class="list" id="list">
-        <div class="buffered"></div>
-    	<div class="challenge" id="challenge">
-    		<h1>Complete the Challenge</h1>
-        <h2>Click on a problem in View Problems to see the description</h2>
-    	</div>
-    	<div class="code">
-    		<form>
-    			<input type="button" value="AddTestCase" class="submitter" onclick="params()">
-
-    		</form>
-
-        <form >
-          <ol id="cases">
-
-
-          </ol>
-
-          <input type="button" value="Submit" class="submitter" onclick="submitter(cases)">
-
-        </form>
-    	</div>
-
-    	<ul id="testCases">
-    	</ul>
-
-    </div>
-
-
-
+        <div class='triangle t1'></div>
+        <div class='triangle t2'></div>
+        <div class='triangle t3'></div>
+        <div class='triangle t4'></div>
+        <div class="list" id="list">
+            <div class="buffered"></div>
+            <div class="challenge" id="challenge">
+                <h1 id="title"></h1>
+                <p id="description"></p>
+                <code id="function_body"></code>
+            </div>
+            <div class="code">
+                <button class="submitter" onclick="params()">Add Test Case</button>
+                <form >
+                    <ol id="cases"></ol>
+                    <input type="submit" class="submitter" onclick="submitter(cases)">
+                </form>
+            </div>
+            <ul id="testCases">
+            </ul>
+        </div>
     </body>
+    <script>
+        $('#logo').click(function(){
+            window.location.replace('/');
+        });
+        $('#view').click(function(){
+            window.location.replace('/view');
+        });
+        $('#create').click(function(){
+            window.location.replace('/create');
+        });
+
+        function loadData(){
+            var filename = window.location.href.split('=')[1];
+            $.get('/loadChallenge?file=' + filename, function(data){
+                if(data){
+                    data = data.data;
+                    $('#title').append(data.name + " (" + data.language + ")");
+                    $('#description').append(data.description);
+                    var func = data.function_body.replace(/\n/g, "<br>");
+                    func = func.replace(/\t/g, "&nbsp;&nbsp;&nbsp;");
+                    $('#function_body').append(func);
+                }
+                else {
+                    alert('There was an error loading your data');
+                    window.location.replace('/view');
+                }
+            });
+        }
+    </script>
 </html>

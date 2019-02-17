@@ -1,0 +1,8 @@
+{
+    "name":"Printing Press",
+    "language":"Python",
+    "description":"This function prints the passed values in a nice format.",
+    "votes":0,
+    "function_body":"def press(*values):\r\n\tcount = 0\r\n\tfor v in values:\r\n\t\tprint(\"Line\" + str(count) + v)\r\n\t\tcount+=1",
+    "test_cases":""
+}
