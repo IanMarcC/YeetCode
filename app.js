@@ -155,6 +155,7 @@ function login(username, password) {
     });
 }
 
+var total_challenges;
 app.get('/challenges', function(req, res){
     var count = req.query.count ? req.query.count : 10;
     params = {
@@ -174,6 +175,7 @@ app.get('/challenges', function(req, res){
             return data;
         });
         var response = await Promise.all(results);
+        total_challenges = response.length;
         res.json({success: true, problems: response});
     });
 });
@@ -191,8 +193,8 @@ function loadS3Data(path) {
     });
 }
 
-var count = 2;
 app.post('/submit', function(req, res){
+    total_challenges++;
     var params = {
         Body: JSON.stringify({
             name: req.body.title,
@@ -202,9 +204,8 @@ app.post('/submit', function(req, res){
             function_body: req.body.funct,
             test_cases: "" 
         }),
-        Key: "challenges/challenge" + count + ".json"
+        Key: "challenges/challenge" + total_challenges + ".json"
     }
-    count++;
     s3bucket.putObject(params, function(err, data){
         if(err) {
             console.log(err);
