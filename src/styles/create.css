@@ -13,24 +13,36 @@ body {
 }
 
 input {
-    font-size: 18px;
+    font-size: 14px;
     color: rgb(67, 66, 90);
     font-family: Comic Sans MS, cursive, serif;
     padding: 5px;
     margin: 10px;
-    border-radius:5px;
+    border-radius: 5px;
     border: none;
     -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
         box-shadow: 0 0 2px rgb(240, 220, 40);
 }
-
-fieldset {
-    border: none;
-}
-
 .submit {
     background-color: rgb(77, 76, 100);
     color: rgb(240, 220, 40);
+}
+textarea {
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    resize: none;
+    border: none;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
+}
+select {
+    border-radius: 10px;
+    color: rgb(67, 66, 90);
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
 }
 
 .topnav {
@@ -71,79 +83,10 @@ fieldset {
     background-size:cover;
 }
 
-.message {
-    position: absolute;
-    color: rgb(240, 220, 40);
-    background-color: transparent;
-    margin-left: 10%;
-    top: 37.5%;
-    width: 80%;
-    font-style: italic;
-    animation: fadeEffect 2s;
-    padding:.5rem;
-}
-
-.floater{
-    margin-top: 5rem;
-    display: none;
-    width: 30%;
-    background-color: rgb(215, 238, 225);
-    border-radius: 10px;
-    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
-        box-shadow: 0 0 2px rgb(240, 220, 40);
-}
-
-/* Style the tab */
-.tab-container{
-    overflow: hidden;
-    line-height: 60px;
-    border-bottom: 1px solid #ccc;
-    /* background-color: #f1f1f1; */
-}
-
-/* Style the buttons that are used to open the tab content */
-.tab-container button {
-    background-color: inherit;
-    color: rgb(67, 66, 90);
-    font-family: Comic Sans MS, cursive, serif;
-    font-size: 22px;
-    width: 50%;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-.tab-container button:hover {
-    background-color: rgb(235, 248, 245);;
-}
-
-/* Create an active/current tablink class */
-.tab-container button.active {
-    background-color: rgb(195, 218, 205);
-}
-
-/* Style the tab content */
-.tab-content {
-    display: none;
-    padding: 6px 12px;
-    /* border: 1px solid #ccc; */
-    border-top: none;
-}
-
-.tab-content {
-    animation: fadeEffect 1s; /* Fading effect takes 1 second */
-}
-
-/* Go from zero to full opacity */
 @keyframes fadeEffect {
-    from {opacity: 0;}
+    from {opacity: .5;}
     to {opacity: 1;}
 }
-
 .triangle {
     position: absolute;
     width: 0;
@@ -177,3 +120,27 @@ fieldset {
     border-left: 700px solid transparent;
     z-index: -2;
 }
+
+.createForm {
+    background-color: rgb(195, 218, 205);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 2px rgb(240, 220, 40);
+        box-shadow: 0 0 2px rgb(240, 220, 40);
+}
+.code {
+    color:rgb(67, 66, 90);
+	text-align: center;
+    background-color: rgb(195, 218, 205);
+    margin-left:25%;
+    margin-right:25%;
+    border-radius: 50px;
+}
+.textareas{
+    height: 275px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+
